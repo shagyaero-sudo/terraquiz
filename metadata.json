@@ -1,0 +1,6 @@
+{
+  "name": "TERRAVANA Active Recall",
+  "description": "Aplikasi kuis active recall filosofi, identitas, kacu, serta visi dan misi TERRAVANA Angkatan 25 Studi Pembangunan ITS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

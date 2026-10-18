@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>TERRAVANA 25 - Active Recall</title>
+  <meta name="description" content="Aplikasi active recall filosofi identitas serta visi dan misi TERRAVANA Angkatan 25." />
+  <meta property="og:title" content="TERRAVANA 25 - Active Recall" />
+  <meta property="og:description" content="Aplikasi active recall filosofi identitas serta visi dan misi TERRAVANA Angkatan 25." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- PDF.js for crisp multi-platform visual PDF rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            terra: {
+              red: '#DB0000',
+              vibrantRed: '#FF0800',
+              orange: '#FF9D00',
+              maroon: '#860400',
+              darkMaroon: '#570300',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom light scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(203, 213, 225, 0.7);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #DB0000;
+    }
+
+    ::selection {
+      background-color: #DB0000;
+      color: #ffffff;
+    }
+
+    /* Glassmorphism utility classes */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      box-shadow: 
+        0 12px 36px -6px rgba(0, 0, 0, 0.05),
+        0 4px 12px -2px rgba(0, 0, 0, 0.02),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+    }
+    .glass-btn {
+      background: rgba(255, 255, 255, 0.60);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.80);
+      box-shadow: 
+        0 4px 14px -2px rgba(0, 0, 0, 0.03),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.92);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-btn:hover {
+      background: rgba(255, 255, 255, 0.88);
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow: 
+        0 8px 24px -4px rgba(0, 0, 0, 0.06),
+        inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+    }
+    .glass-modal {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(32px) saturate(190%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 
+        0 25px 60px -15px rgba(0, 0, 0, 0.12),
+        inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-100 via-rose-100/40 via-amber-100/35 to-orange-100/30 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-center items-center p-4 selection:bg-terra-red selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Light Orbs & Mesh Gradient Elements (Refracts through all glassmorphism cards, ready for custom background image) -->
+  <div class="fixed top-1/4 -left-20 w-80 h-80 bg-gradient-to-tr from-terra-red/25 to-terra-orange/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" style="animation-duration: 8s;"></div>
+  <div class="fixed bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-bl from-amber-400/25 to-terra-red/20 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" style="animation-duration: 10s;"></div>
+  <div class="fixed top-2/3 left-1/3 w-72 h-72 bg-gradient-to-r from-rose-300/20 to-amber-300/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="w-full max-w-xl mx-auto my-auto flex flex-col justify-center">
+
+    <!-- VIEW 1: CLEAN HOME SCREEN (PILIHAN PAKET KUIS) -->
+    <section id="view-home" class="w-full py-6 text-center space-y-6">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight mb-2.5">
+          TERRAVANA 25
+        </h1>
+        <p class="text-sm sm:text-base text-slate-600 max-w-md mx-auto leading-relaxed">
+          Recall filosofi identitas serta visi dan misi.
+        </p>
+      </div>
+
+      <!-- Action Buttons: Pilihan Mode -->
+      <div class="space-y-3.5 max-w-md mx-auto pt-2">
+        <span class="block text-xs font-mono font-bold text-slate-400 uppercase tracking-widest text-center">
+          Pilih Mode
+        </span>
+
+        <!-- Option 1: 10 Soal -->
+        <button
+          onclick="startQuiz('10')"
+          class="w-full group p-4 rounded-2xl glass-btn hover:border-terra-orange text-left transition-all duration-200 flex items-center justify-between active:scale-[0.99] focus:outline-none"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-amber-50/80 border border-amber-200/80 text-terra-orange font-mono font-bold text-base flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+              10
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-slate-900 group-hover:text-terra-orange transition-colors">10 Soal</h2>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Latihan singkat</p>
+            </div>
+          </div>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-terra-orange group-hover:translate-x-0.5 transition-all flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Option 2: 25 Soal -->
+        <button
+          onclick="startQuiz('25')"
+          class="w-full group p-4 rounded-2xl glass-btn hover:border-terra-red text-left transition-all duration-200 flex items-center justify-between active:scale-[0.99] focus:outline-none"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-rose-50/80 border border-rose-200/80 text-terra-red font-mono font-extrabold text-base flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+              25
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-slate-900 group-hover:text-terra-red transition-colors">25 Soal</h2>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Lebih komprehensif</p>
+            </div>
+          </div>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-terra-red group-hover:translate-x-0.5 transition-all flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Option 3: Marathon Mode (Semua Soal) -->
+        <button
+          onclick="startQuiz('all')"
+          class="w-full group p-4 rounded-2xl glass-btn hover:border-slate-400 text-left transition-all duration-200 flex items-center justify-between active:scale-[0.99] focus:outline-none"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-slate-100/80 border border-slate-200/80 text-slate-700 font-mono font-bold text-xs flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+              ALL
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-slate-900 group-hover:text-slate-900 transition-colors">Mode Marathon</h2>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Kuasai seluruh soal!</p>
+            </div>
+          </div>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Tombol Kecil PDF (Di dashboard bagian bawah) -->
+      <div class="pt-5 border-t border-slate-300/50 max-w-md mx-auto">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5">
+          <!-- Button 1: Filosofi Identitas (terravana - guideline.pdf) -->
+          <button
+            onclick="openPdfReader('guideline')"
+            class="w-full sm:w-1/2 inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl glass-btn hover:border-terra-red/60 text-xs font-semibold text-slate-700 hover:text-terra-red transition-all active:scale-95 group shadow-xs"
+            title="Buka & Baca Filosofi Identitas (terravana - guideline.pdf)"
+          >
+            <svg class="w-3.5 h-3.5 text-terra-red group-hover:scale-110 transition-transform flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span class="truncate">Filosofi Identitas <span class="text-[10px] font-mono text-slate-400 group-hover:text-slate-600 font-normal">(terravana - guideline.pdf)</span></span>
+          </button>
+
+          <!-- Button 2: Visi dan Misi (Visi Misi Terravana 2025.pdf) -->
+          <button
+            onclick="openPdfReader('visimisi')"
+            class="w-full sm:w-1/2 inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl glass-btn hover:border-terra-orange/60 text-xs font-semibold text-slate-700 hover:text-terra-orange transition-all active:scale-95 group shadow-xs"
+            title="Buka & Baca Visi dan Misi (Visi Misi Terravana 2025.pdf)"
+          >
+            <svg class="w-3.5 h-3.5 text-terra-orange group-hover:scale-110 transition-transform flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span class="truncate">Visi dan Misi <span class="text-[10px] font-mono text-slate-400 group-hover:text-slate-600 font-normal">(Visi Misi Terravana 2025.pdf)</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: QUIZ ACTIVE STAGE (GLASSMORPHISM) -->
+    <section id="view-quiz" class="hidden w-full space-y-5">
+      <!-- Top Bar -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
+        <button onclick="goHome()" class="px-3.5 py-1.5 rounded-xl glass-btn hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer active:scale-95" title="Kembali ke Menu Utama">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>Kembali</span>
+        </button>
+
+        <div class="flex items-center gap-2.5">
+          <!-- Timer -->
+          <div class="px-3 py-1.5 rounded-xl glass-card text-xs font-mono text-slate-600 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-terra-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="quiz-timer">00:00</span>
+          </div>
+
+          <!-- Live Score -->
+          <div class="px-3 py-1.5 rounded-xl glass-card text-xs font-mono font-semibold text-terra-red">
+            Skor: <span id="quiz-live-score" class="text-slate-900">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Card Container -->
+      <div id="quiz-active-container" class="w-full">
+        <!-- Progress Counter & Bar -->
+        <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-1.5">
+          <span>Soal <span id="quiz-curr-idx">1</span> dari <span id="quiz-total-idx">10</span></span>
+          <span id="quiz-pct-text">10% Selesai</span>
+        </div>
+        <div class="w-full bg-slate-200/80 h-1.5 rounded-full overflow-hidden mb-5 backdrop-blur-xs">
+          <div id="quiz-progress-fill" class="bg-gradient-to-r from-terra-red to-terra-orange h-full transition-all duration-300" style="width: 10%"></div>
+        </div>
+
+        <!-- Question Card (Glassmorphism) -->
+        <div class="glass-card rounded-2xl p-5 sm:p-6 mb-4">
+          <span class="text-[11px] font-mono font-bold text-terra-red uppercase tracking-wider block mb-1.5">Pertanyaan</span>
+          <h2 id="quiz-question-text" class="text-base sm:text-lg font-bold text-slate-900 leading-relaxed">
+            Teks pertanyaan...
+          </h2>
+        </div>
+
+        <!-- Options Container (A, B, C, D - Glassmorphic) -->
+        <div id="quiz-options-container" class="space-y-2.5 mb-4">
+          <!-- Dynamic 4 Options injected by JS -->
+        </div>
+
+        <!-- Immediate Explanation Panel (Glassmorphism) -->
+        <div id="quiz-feedback-panel" class="hidden border-l-4 rounded-xl p-4 sm:p-5 mb-4 transition-all duration-200 shadow-sm backdrop-blur-md">
+          <div class="flex items-start gap-3">
+            <div id="quiz-feedback-icon" class="mt-0.5 flex-shrink-0"></div>
+            <div>
+              <h4 id="quiz-feedback-title" class="text-xs sm:text-sm font-bold mb-1">Tepat Sekali!</h4>
+              <p id="quiz-feedback-text" class="text-xs sm:text-sm leading-relaxed">
+                Penjelasan resmi terkait.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Question Button -->
+        <div class="flex justify-end pt-1">
+          <button
+            id="btn-quiz-next"
+            onclick="handleNextQuestion()"
+            class="hidden py-3 px-6 bg-gradient-to-r from-terra-red to-terra-vibrantRed hover:from-terra-vibrantRed hover:to-terra-red text-white text-xs sm:text-sm font-semibold rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2 active:scale-95"
+          >
+            <span id="btn-quiz-next-text">Pertanyaan Selanjutnya</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 3: SUMMARY SCREEN (GLASSMORPHISM) -->
+      <div id="quiz-summary-container" class="hidden w-full text-center py-2">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-terra-red to-terra-orange mx-auto p-1 mb-4 shadow-lg shadow-terra-red/20">
+            <div class="w-full h-full bg-white/90 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-terra-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-black text-slate-900 mb-1">Hasil Kuis Kamu</h3>
+          <p id="summary-grade-text" class="text-xs sm:text-sm font-bold text-terra-red uppercase font-mono tracking-wider mb-6">
+            Luar Biasa • Penguasaan Tinggi
+          </p>
+
+          <!-- Score Metrics Grid (Glassmorphism) -->
+          <div class="grid grid-cols-3 gap-2.5 mb-6">
+            <div class="glass-card p-3 rounded-xl">
+              <span class="block text-[10px] uppercase font-mono text-slate-500 font-semibold">Benar</span>
+              <span id="summary-score" class="text-xl sm:text-2xl font-bold text-slate-900 font-mono">10/10</span>
+            </div>
+            <div class="glass-card p-3 rounded-xl">
+              <span class="block text-[10px] uppercase font-mono text-slate-500 font-semibold">Akurasi</span>
+              <span id="summary-accuracy" class="text-xl sm:text-2xl font-bold text-emerald-600 font-mono">100%</span>
+            </div>
+            <div class="glass-card p-3 rounded-xl">
+              <span class="block text-[10px] uppercase font-mono text-slate-500 font-semibold">Waktu</span>
+              <span id="summary-time" class="text-xl sm:text-2xl font-bold text-terra-orange font-mono">01:45</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="space-y-2.5">
+            <button
+              id="btn-review-mistakes"
+              onclick="showReviewMistakesModal()"
+              class="w-full py-3 px-4 rounded-xl glass-btn text-slate-700 hover:text-slate-900 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Review Jawaban Salah (<span id="summary-wrong-count">0</span>)</span>
+            </button>
+
+            <div class="grid grid-cols-2 gap-3">
+              <button
+                onclick="restartCurrentQuiz()"
+                class="py-3 px-4 rounded-xl bg-terra-red hover:bg-terra-vibrantRed text-white text-xs sm:text-sm font-semibold transition-all shadow-md flex items-center justify-center gap-1.5"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                </svg>
+                <span>Ulangi Paket Ini</span>
+              </button>
+              <button
+                onclick="goHome()"
+                class="py-3 px-4 rounded-xl glass-btn text-slate-700 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-1.5"
+              >
+                <span>Ganti Paket</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: REVIEW MISTAKES (GLASSMORPHISM) -->
+  <div id="modal-review" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-modal rounded-3xl w-full max-w-xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="px-5 py-3.5 border-b border-white/60 flex items-center justify-between bg-white/50 backdrop-blur-md">
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-xs"></div>
+          <h3 class="text-sm font-bold text-slate-900">Review Soal yang Keliru</h3>
+        </div>
+        <button onclick="closeReviewModal()" class="p-1 rounded-lg hover:bg-slate-200/60 text-slate-500 hover:text-slate-800 transition-colors" aria-label="Tutup Dialog">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div id="modal-review-list" class="p-5 overflow-y-auto space-y-3.5 flex-1 text-left">
+        <!-- Injected list of mistakes with explanation -->
+      </div>
+
+      <div class="p-3.5 border-t border-white/60 bg-white/50 backdrop-blur-md flex justify-end">
+        <button onclick="closeReviewModal()" class="px-4 py-2 rounded-xl bg-terra-red hover:bg-terra-vibrantRed text-white text-xs font-semibold shadow-xs transition-all active:scale-95">
+          Kembali
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PDF READER VIEWER (BACA DOKUMEN RESMI ASLI LANGSUNG TANPA TRANSKRIP) -->
+  <div id="modal-pdf" class="hidden fixed inset-0 z-50 bg-slate-900/45 backdrop-blur-md flex items-center justify-center p-2 sm:p-4">
+    <div class="glass-modal rounded-3xl w-full max-w-4xl h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="px-4 sm:px-5 py-3.5 border-b border-white/60 flex items-center justify-between bg-white/65 backdrop-blur-md flex-shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-rose-50 border border-rose-200/80 text-terra-red flex items-center justify-center flex-shrink-0 shadow-xs">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <div>
+            <h3 id="pdf-modal-title" class="text-sm font-bold text-slate-900">Dokumen PDF</h3>
+            <span id="pdf-modal-file" class="text-[11px] font-mono text-slate-500">terravana - guideline.pdf</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a
+            id="pdf-download-link"
+            href="terravana - guideline.pdf"
+            target="_blank"
+            class="px-3 py-1.5 rounded-xl glass-btn text-slate-700 hover:text-terra-red text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-2xs"
+            title="Buka / Unduh Berkas PDF Asli"
+          >
+            <svg class="w-3.5 h-3.5 text-terra-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span class="hidden sm:inline">Buka di Tab Baru</span>
+            <span class="sm:hidden">Unduh</span>
+          </a>
+          <button onclick="closePdfModal()" class="p-1.5 rounded-xl hover:bg-slate-200/60 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer" aria-label="Tutup Dialog">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (Renders the actual PDF pages directly with high fidelity) -->
+      <div id="pdf-viewer-container" class="flex-1 w-full bg-slate-200/50 relative overflow-y-auto p-3 sm:p-5 flex flex-col items-center gap-4">
+        <div id="pdf-loading" class="my-auto py-12 flex flex-col items-center justify-center text-slate-500 gap-2.5">
+          <div class="w-8 h-8 border-3 border-terra-red border-t-transparent rounded-full animate-spin"></div>
+          <span class="text-xs font-mono font-medium">Memuat berkas PDF asli...</span>
+        </div>
+        <div id="pdf-pages" class="w-full flex flex-col items-center gap-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMBEDDED JAVASCRIPT & STRICT CURATED QUESTION BANK -->
+  <script>
+    if (window.pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+
+    let activePdfTask = null;
+
+    async function loadAndRenderPdf(fileUrl) {
+      const pagesContainer = document.getElementById('pdf-pages');
+      const loader = document.getElementById('pdf-loading');
+      pagesContainer.innerHTML = '';
+      loader.classList.remove('hidden');
+
+      if (!window.pdfjsLib) {
+        loader.classList.add('hidden');
+        pagesContainer.innerHTML = `<iframe src="${fileUrl}" class="w-full h-[75vh] border-0 rounded-xl bg-white" title="PDF"></iframe>`;
+        return;
+      }
+
+      try {
+        if (activePdfTask) {
+          try { activePdfTask.destroy(); } catch (e) {}
+        }
+        activePdfTask = pdfjsLib.getDocument(fileUrl);
+        const pdf = await activePdfTask.promise;
+        loader.classList.add('hidden');
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          const page = await pdf.getPage(pageNum);
+          const viewport = page.getViewport({ scale: 1.5 });
+
+          const card = document.createElement('div');
+          card.className = "rounded-xl overflow-hidden shadow-md border border-slate-300/80 bg-white max-w-full relative";
+
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          canvas.className = "max-w-full h-auto block";
+
+          card.appendChild(canvas);
+          pagesContainer.appendChild(card);
+
+          await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+        }
+      } catch (err) {
+        console.warn('PDF.js rendering fallback to iframe/object:', err);
+        loader.classList.add('hidden');
+        pagesContainer.innerHTML = `<iframe src="${fileUrl}" class="w-full h-[75vh] border-0 rounded-xl bg-white" title="PDF"></iframe>`;
+      }
+    }
+
+    function openPdfReader(type) {
+      const isGuideline = type === 'guideline';
+      const fileTitle = isGuideline ? "Filosofi Identitas" : "Visi dan Misi";
+      const fileName = isGuideline ? "terravana - guideline.pdf" : "Visi Misi Terravana 2025.pdf";
+      const fileUrl = encodeURI(fileName);
+
+      document.getElementById('pdf-modal-title').textContent = fileTitle;
+      document.getElementById('pdf-modal-file').textContent = fileName;
+      document.getElementById('pdf-download-link').href = fileUrl;
+
+      document.getElementById('modal-pdf').classList.remove('hidden');
+      loadAndRenderPdf(fileUrl);
+      playBeep(600, 0.05);
+    }
+
+    function closePdfModal() {
+      if (activePdfTask) {
+        try { activePdfTask.destroy(); } catch (e) {}
+        activePdfTask = null;
+      }
+      document.getElementById('pdf-pages').innerHTML = '';
+      document.getElementById('modal-pdf').classList.add('hidden');
+    }
+
+    /* ========================================================================
+       STRICT CURATED QUESTION BANK (30 TARGETED QUESTIONS)
+       100% strictly aligned with TERRAVANA (Angkatan 25 Studi Pembangunan ITS):
+       - Terra, Vana, Terravana
+       - Angka 25, Arah Visual ke Atas, Burung Phoenix (SDGs 16), Gulungan Ombak (SDGs 14)
+       - Oranye (#FF9D00), Merah (#DB0000, #FF0800), Merah Marun (#570300, #860400)
+       - Kain Hitam, Posisi Leher
+       - Visi TERRAVANA & Misi 1 - 5
+       ======================================================================== */
+    const RAW_QUESTION_BANK = [
+      {
+        id: 1,
+        question: "Kata 'Terra' dalam nama TERRAVANA berasal dari bahasa apa dan bermakna apa?",
+        correctOption: "Latin: Bumi / tanah kehidupan tempat manusia tumbuh, hidup, & membangun masa depan bersama",
+        distractors: [
+          "Sanskerta: Hutan / alam kehidupan tempat ketahanan dan harmoni bertumbuh",
+          "Latin: Alam kehidupan yang memiliki ketahanan, harmoni, & pertumbuhan berkelanjutan",
+          "Sanskerta: Tanah kehidupan tempat manusia tumbuh, hidup, & berproses bersama"
+        ],
+        explanation: "Terra berasal dari bahasa Latin yang bermakna: Bumi / tanah kehidupan. Tempat manusia tumbuh, hidup, & membangun masa depan bersama."
+      },
+      {
+        id: 2,
+        question: "Kata 'Vana' dalam nama TERRAVANA berasal dari bahasa apa dan bermakna apa?",
+        correctOption: "Sanskerta: Hutan / alam kehidupan (ketahanan, harmoni, & pertumbuhan berkelanjutan)",
+        distractors: [
+          "Latin: Hutan / alam kehidupan (tempat manusia tumbuh, hidup, & membangun masa depan bersama)",
+          "Sanskerta: Bumi / tanah kehidupan yang menjaga keselarasan pembangunan berkelanjutan",
+          "Latin: Alam kehidupan yang melambangkan optimisme dan kehangatan kebersamaan"
+        ],
+        explanation: "Vana berasal dari bahasa Sanskerta yang bermakna: Hutan / alam kehidupan. Ketahanan, harmoni, & pertumbuhan berkelanjutan."
+      },
+      {
+        id: 3,
+        question: "Secara komprehensif, apa makna identitas dari nama 'TERRAVANA' bagi Angkatan 25?",
+        correctOption: "Generasi yang tumbuh bersama bumi, menjaga keseimbangan antara pembangunan, masyarakat, dan alam demi masa depan berkelanjutan (Sesuai SDGs)",
+        distractors: [
+          "Generasi tangguh dan adaptif yang memajukan studi pembangunan melalui riset lingkungan berkelanjutan",
+          "Generasi pelindung kelestarian bumi dan hutan demi mewujudkan solidaritas dan rasa kekeluargaan",
+          "Generasi pembaharu yang mengutamakan pembangunan ekonomi masyarakat di atas batas-batas alam"
+        ],
+        explanation: "Terravana bermakna: Generasi yang tumbuh bersama bumi, menjaga keseimbangan antara pembangunan, masyarakat, dan alam demi masa depan berkelanjutan (Sesuai SDGs)."
+      },
+      {
+        id: 4,
+        question: "Dalam logo TERRAVANA, elemen 'Angka 25' melambangkan apa?",
+        correctOption: "Identitas Angkatan 25, keselarasan individu dan tujuan bersama",
+        distractors: [
+          "Identitas Angkatan 25, solidaritas penuh dan rasa kekeluargaan",
+          "Harapan, cita-cita tinggi, dan tekad untuk terus berkembang",
+          "Kekuatan, ketangguhan, konsistensi, serta adaptasi perubahan"
+        ],
+        explanation: "Angka 25 melambangkan: Identitas Angkatan 25, keselarasan individu dan tujuan bersama."
+      },
+      {
+        id: 5,
+        question: "Elemen 'Arah Visual ke Atas' pada logo TERRAVANA mengandung filosofi:",
+        correctOption: "Harapan, cita-cita tinggi, dan terus berkembang",
+        distractors: [
+          "Keberanian untuk berproses dan semangat membara",
+          "Keteguhan hati, kekuatan batin, dan fondasi kokoh",
+          "Bangkit kembali dengan kekuatan baru dan pantang menyerah"
+        ],
+        explanation: "Arah Visual ke Atas melambangkan: Harapan, cita-cita tinggi, dan terus berkembang."
+      },
+      {
+        id: 6,
+        question: "Elemen 'Burung Phoenix' pada logo TERRAVANA melambangkan karakter apa dan selaras dengan SDGs nomor berapa?",
+        correctOption: "Bangkit kembali dengan kekuatan baru, pantang menyerah, adaptasi, serta SDGs Poin 16 (Peace, Justice, and Strong Institutions)",
+        distractors: [
+          "Kekuatan, ketangguhan, konsistensi, serta SDGs Poin 14 (Life Below Water)",
+          "Bangkit kembali dengan kekuatan baru, pantang menyerah, adaptasi, serta SDGs Poin 14 (Life Below Water)",
+          "Kekuatan, ketangguhan, konsistensi, serta SDGs Poin 16 (Peace, Justice, and Strong Institutions)"
+        ],
+        explanation: "Burung Phoenix melambangkan: Bangkit kembali dengan kekuatan baru, pantang menyerah, adaptasi, serta SDGs Poin 16 (Peace, Justice, and Strong Institutions)."
+      },
+      {
+        id: 7,
+        question: "Elemen 'Gulungan Ombak' pada logo TERRAVANA melambangkan karakter apa dan selaras dengan SDGs nomor berapa?",
+        correctOption: "Kekuatan, ketangguhan, konsistensi, serta SDGs Poin 14 (Life Below Water)",
+        distractors: [
+          "Kekuatan, ketangguhan, konsistensi, serta SDGs Poin 16 (Peace, Justice, and Strong Institutions)",
+          "Bangkit kembali dengan kekuatan baru, pantang menyerah, adaptasi, serta SDGs Poin 14 (Life Below Water)",
+          "Harapan, cita-cita tinggi, dan terus berkembang, serta SDGs Poin 14 (Life Below Water)"
+        ],
+        explanation: "Gulungan Ombak melambangkan: Kekuatan, ketangguhan, konsistensi, serta SDGs Poin 14 (Life Below Water)."
+      },
+      {
+        id: 8,
+        question: "Manakah pasangan yang TEPAT antara elemen logo dan SDGs yang diusungnya?",
+        correctOption: "Burung Phoenix = SDGs Poin 16 | Gulungan Ombak = SDGs Poin 14",
+        distractors: [
+          "Burung Phoenix = SDGs Poin 14 | Gulungan Ombak = SDGs Poin 16",
+          "Burung Phoenix = SDGs Poin 15 | Gulungan Ombak = SDGs Poin 14",
+          "Burung Phoenix = SDGs Poin 16 | Gulungan Ombak = SDGs Poin 13"
+        ],
+        explanation: "Burung Phoenix selaras dengan SDGs 16 (Peace, Justice, and Strong Institutions), sedangkan Gulungan Ombak selaras dengan SDGs 14 (Life Below Water)."
+      },
+      {
+        id: 9,
+        question: "Warna Oranye (#FF9D00) dalam skema warna TERRAVANA memiliki filosofi:",
+        correctOption: "Optimisme, kreativitas, kehangatan",
+        distractors: [
+          "Energi, keberanian, semangat membara",
+          "Kekuatan, keteguhan hati, fondasi kokoh",
+          "Ketahanan, harmoni, pertumbuhan berkelanjutan"
+        ],
+        explanation: "Oranye (#FF9D00) melambangkan: Optimisme, kreativitas, kehangatan."
+      },
+      {
+        id: 10,
+        question: "Berapa kode HEX resmi untuk Warna Oranye pada identitas TERRAVANA?",
+        correctOption: "#FF9D00",
+        distractors: [
+          "#FFA800",
+          "#FF8C00",
+          "#FF9500"
+        ],
+        explanation: "Kode warna HEX resmi untuk Warna Oranye TERRAVANA adalah #FF9D00."
+      },
+      {
+        id: 11,
+        question: "Warna Merah (#DB0000, #FF0800) dalam skema warna TERRAVANA memiliki filosofi:",
+        correctOption: "Energi, keberanian, semangat membara",
+        distractors: [
+          "Kekuatan, keteguhan hati, fondasi kokoh",
+          "Optimisme, kreativitas, kehangatan",
+          "Ketahanan, harmoni, pertumbuhan berkelanjutan"
+        ],
+        explanation: "Merah (#DB0000, #FF0800) melambangkan: Energi, keberanian, semangat membara."
+      },
+      {
+        id: 12,
+        question: "Berapa dua kode HEX resmi untuk Warna Merah pada identitas TERRAVANA?",
+        correctOption: "#DB0000 dan #FF0800",
+        distractors: [
+          "#DB0000 dan #FF0000",
+          "#DC0000 dan #FF0800",
+          "#D00000 dan #FF0800"
+        ],
+        explanation: "Kode HEX resmi untuk Warna Merah TERRAVANA adalah #DB0000 dan #FF0800."
+      },
+      {
+        id: 13,
+        question: "Warna Merah Marun (#570300, #860400) dalam skema warna TERRAVANA memiliki filosofi:",
+        correctOption: "Kekuatan, keteguhan hati, fondasi kokoh",
+        distractors: [
+          "Energi, keberanian, semangat membara",
+          "Optimisme, kreativitas, kehangatan",
+          "Ruang gelap, sikap tenang di situasi sulit"
+        ],
+        explanation: "Merah Marun (#570300, #860400) melambangkan: Kekuatan, keteguhan hati, fondasi kokoh."
+      },
+      {
+        id: 14,
+        question: "Berapa dua kode HEX resmi untuk Warna Merah Marun pada identitas TERRAVANA?",
+        correctOption: "#570300 dan #860400",
+        distractors: [
+          "#570300 dan #820400",
+          "#540200 dan #860400",
+          "#570300 dan #880400"
+        ],
+        explanation: "Kode HEX resmi untuk Warna Merah Marun TERRAVANA adalah #570300 dan #860400."
+      },
+      {
+        id: 15,
+        question: "Dalam aturan kacu TERRAVANA, apa filosofi dari pemakaian 'Kain Hitam'?",
+        correctOption: "Ruang gelap, sikap tenang di situasi sulit. Terravana tidak pernah ditenggelamkan.",
+        distractors: [
+          "Menjaga ucapan dan komitmen menyuarakan kebenaran.",
+          "Kekuatan, keteguhan hati, serta fondasi kokoh angkatan.",
+          "Menumbuhkan keberanian untuk berproses dan berkembang di saat sulit."
+        ],
+        explanation: "Kain Hitam: Ruang gelap, sikap tenang di situasi sulit. Terravana tidak pernah ditenggelamkan."
+      },
+      {
+        id: 16,
+        question: "Prinsip mental yang secara mutlak terkandung dalam filosofi 'Kain Hitam' pada kacu adalah:",
+        correctOption: "Terravana tidak pernah ditenggelamkan",
+        distractors: [
+          "Terravana selalu menjadi pelopor perubahan",
+          "Terravana senantiasa menyuarakan kebenaran",
+          "Terravana pantang berbalik arah"
+        ],
+        explanation: "Filosofi Kain Hitam membawa pesan tegas: Terravana tidak pernah ditenggelamkan."
+      },
+      {
+        id: 17,
+        question: "Dalam aturan kacu TERRAVANA, kacu dikenakan di leher. Apa makna filosofis dari 'Posisi Leher'?",
+        correctOption: "Menjaga ucapan dan komitmen menyuarakan kebenaran",
+        distractors: [
+          "Sikap tenang di situasi sulit dan tidak pernah ditenggelamkan",
+          "Keselarasan antara potensi individu dan tujuan bersama",
+          "Menjaga solidaritas dan rasa kekeluargaan antarsesama"
+        ],
+        explanation: "Posisi Leher: Menjaga ucapan dan komitmen menyuarakan kebenaran."
+      },
+      {
+        id: 18,
+        question: "Manakah rumusan lengkap yang PERSIS dari Visi TERRAVANA?",
+        correctOption: "TERRAVANA BERTUMBUH BERSAMA SEBAGAI GENERASI YANG MEMBUKTIKAN EKSISTENSINYA MELALUI KEBERANIAN UNTUK BERPROSES DAN KETANGGUHAN DALAM MENGHADAPI PERUBAHAN SERTA KONTRIBUSI NYATA DEMI MASA DEPAN YANG BERKELANJUTAN.",
+        distractors: [
+          "TERRAVANA BERTUMBUH BERSATU SEBAGAI GENERASI YANG MEMBUKTIKAN EKSISTENSINYA MELALUI KETANGGUHAN UNTUK BERPROSES DAN KEBERANIAN DALAM MENGHADAPI PERUBAHAN SERTA KONTRIBUSI NYATA DEMI MASA DEPAN YANG BERKELANJUTAN.",
+          "TERRAVANA BERTUMBUH BERSAMA SEBAGAI GENERASI YANG MEMBUKTIKAN INTEGRITASNYA MELALUI KEBERANIAN UNTUK BERKEMBANG DAN KETANGGUHAN DALAM MENGHADAPI TANTANGAN SERTA KONTRIBUSI NYATA DEMI MASA DEPAN YANG BERKELANJUTAN.",
+          "TERRAVANA BERTUMBUH BERSAMA SEBAGAI GENERASI YANG MEMBANGUN EKSISTENSINYA MELALUI KEBERANIAN UNTUK BERPROSES DAN KETANGGUHAN DALAM MENGHADAPI PERUBAHAN SERTA KONTRIBUSI AKTIF DEMI MASA DEPAN YANG BERKELANJUTAN."
+        ],
+        explanation: "Visi Resmi: 'TERRAVANA BERTUMBUH BERSAMA SEBAGAI GENERASI YANG MEMBUKTIKAN EKSISTENSINYA MELALUI KEBERANIAN UNTUK BERPROSES DAN KETANGGUHAN DALAM MENGHADAPI PERUBAHAN SERTA KONTRIBUSI NYATA DEMI MASA DEPAN YANG BERKELANJUTAN.'"
+      },
+      {
+        id: 19,
+        question: "Dalam Visi TERRAVANA, eksistensi generasi dibuktikan melalui:",
+        correctOption: "Keberanian untuk berproses dan ketangguhan dalam menghadapi perubahan",
+        distractors: [
+          "Solidaritas kekeluargaan dan partisipasi aktif setiap anggota",
+          "Keberanian untuk berkembang dan konsistensi menjaga komitmen",
+          "Ketangguhan dalam berproses dan kemampuan beradaptasi dengan cepat"
+        ],
+        explanation: "Visi menyebutkan pembuktian eksistensi: '...MELALUI KEBERANIAN UNTUK BERPROSES DAN KETANGGUHAN DALAM MENGHADAPI PERUBAHAN...'"
+      },
+      {
+        id: 20,
+        question: "Klausa penutup pada Visi TERRAVANA berbunyi:",
+        correctOption: "serta kontribusi nyata demi masa depan yang berkelanjutan.",
+        distractors: [
+          "serta kontribusi aktif demi masa depan yang berkelanjutan.",
+          "serta karya nyata demi pembangunan yang berkelanjutan.",
+          "serta kontribusi nyata bagi masyarakat dan alam semesta."
+        ],
+        explanation: "Klausa penutup Visi: '...SERTA KONTRIBUSI NYATA DEMI MASA DEPAN YANG BERKELANJUTAN.'"
+      },
+      {
+        id: 21,
+        question: "Apa rumusan persis dari Misi 1 TERRAVANA?",
+        correctOption: "Membangun solidaritas dan rasa kekeluargaan yang kuat untuk menciptakan lingkungan angkatan yang inklusif, suportif, dan tumbuh bersama.",
+        distractors: [
+          "Menumbuhkan solidaritas dan rasa kekeluargaan yang erat demi mewujudkan persatuan angkatan yang tangguh.",
+          "Membangun rasa kekeluargaan dan persatuan angkatan melalui apresiasi dan saling peduli antarteman.",
+          "Membentuk solidaritas dan jiwa kekeluargaan untuk menciptakan generasi yang inklusif dan solutif."
+        ],
+        explanation: "Misi 1: 'Membangun solidaritas dan rasa kekeluargaan yang kuat untuk menciptakan lingkungan angkatan yang inklusif, suportif, dan tumbuh bersama.'"
+      },
+      {
+        id: 22,
+        question: "Apa rumusan persis dari Misi 2 TERRAVANA?",
+        correctOption: "Menumbuhkan keberanian untuk berproses dan berkembang melalui keterbukaan terhadap evaluasi, kemauan belajar dari kesalahan, serta apresiasi terhadap setiap proses dan pencapaian.",
+        distractors: [
+          "Mendorong keberanian untuk berproses dan berkembang melalui budaya berani mencoba dan evaluasi kegiatan berkala.",
+          "Menumbuhkan keberanian untuk berproses dan beradaptasi melalui keterbukaan evaluasi serta belajar dari kesalahan.",
+          "Membina keberanian untuk berproses dan bertumbuh demi menghasilkan capaian yang membanggakan angkatan."
+        ],
+        explanation: "Misi 2: 'Menumbuhkan keberanian untuk berproses dan berkembang melalui keterbukaan terhadap evaluasi, kemauan belajar dari kesalahan, serta apresiasi terhadap setiap proses dan pencapaian.'"
+      },
+      {
+        id: 23,
+        question: "Apa rumusan persis dari Misi 3 TERRAVANA?",
+        correctOption: "Membentuk generasi yang tangguh dan adaptif dalam menghadapi perubahan serta mampu menjadikan tantangan sebagai peluang untuk berkembang.",
+        distractors: [
+          "Membentuk generasi yang adaptif dan kontributif dalam menghadapi tantangan zaman serta siap menjadi pemecah masalah.",
+          "Menumbuhkan generasi yang tangguh dan adaptif melalui forum problem-solving dalam menyusun solusi bersama angkatan.",
+          "Membentuk generasi yang tangguh, kritis, dan adaptif dalam mengawal pembangunan masyarakat berkelanjutan."
+        ],
+        explanation: "Misi 3: 'Membentuk generasi yang tangguh dan adaptif dalam menghadapi perubahan serta mampu menjadikan tantangan sebagai peluang untuk berkembang.'"
+      },
+      {
+        id: 24,
+        question: "Apa rumusan persis dari Misi 4 TERRAVANA?",
+        correctOption: "Mendorong partisipasi aktif dan pengembangan potensi setiap anggota angkatan dengan memberikan ruang bagi seluruh anggota angkatan untuk berinisiatif, berkolaborasi, dan berkontribusi.",
+        distractors: [
+          "Mendorong partisipasi aktif dan pemberdayaan potensi seluruh anggota angkatan melalui pemerataan kesempatan lomba.",
+          "Mewadahi partisipasi aktif dan pengembangan bakat setiap anggota angkatan demi kemajuan bersama di lingkungan kampus.",
+          "Mendorong kontribusi aktif dan pengembangan potensi setiap anggota angkatan dengan memberikan kesempatan seluas-luasnya."
+        ],
+        explanation: "Misi 4: 'Mendorong partisipasi aktif dan pengembangan potensi setiap anggota angkatan dengan memberikan ruang bagi seluruh anggota angkatan untuk berinisiatif, berkolaborasi, dan berkontribusi.'"
+      },
+      {
+        id: 25,
+        question: "Apa rumusan persis dari Misi 5 TERRAVANA?",
+        correctOption: "Mewujudkan kontribusi nyata yang berkelanjutan melalui aksi kolaboratif yang memberikan dampak positif bagi angkatan, lingkungan sekitar, dan masyarakat.",
+        distractors: [
+          "Mewujudkan karya nyata yang berkelanjutan melalui kegiatan pengabdian masyarakat, KKN, dan aksi sosial angkatan.",
+          "Memberikan kontribusi nyata yang berkelanjutan melalui aksi solutif demi kemaslahatan masyarakat dan kelestarian alam.",
+          "Mewujudkan kontribusi nyata yang berdampak luas melalui sinergi antarmahasiswa dan pengabdian masyarakat berkelanjutan."
+        ],
+        explanation: "Misi 5: 'Mewujudkan kontribusi nyata yang berkelanjutan melalui aksi kolaboratif yang memberikan dampak positif bagi angkatan, lingkungan sekitar, dan masyarakat.'"
+      },
+      {
+        id: 26,
+        question: "Cermati kata kerja pembuka pada Misi 1, Misi 2, dan Misi 3 secara berurutan:",
+        correctOption: "Membangun (Misi 1), Menumbuhkan (Misi 2), Membentuk (Misi 3)",
+        distractors: [
+          "Menumbuhkan (Misi 1), Membangun (Misi 2), Membentuk (Misi 3)",
+          "Membangun (Misi 1), Mendorong (Misi 2), Mewujudkan (Misi 3)",
+          "Membentuk (Misi 1), Menumbuhkan (Misi 2), Mendorong (Misi 3)"
+        ],
+        explanation: "Urutan kata kerja Misi 1-3 adalah: Membangun (solidaritas...), Menumbuhkan (keberanian...), Membentuk (generasi...)."
+      },
+      {
+        id: 27,
+        question: "Cermati kata kerja pembuka pada Misi 4 dan Misi 5 secara berurutan:",
+        correctOption: "Mendorong (Misi 4) dan Mewujudkan (Misi 5)",
+        distractors: [
+          "Mewujudkan (Misi 4) dan Mendorong (Misi 5)",
+          "Membangun (Misi 4) dan Mewujudkan (Misi 5)",
+          "Mendorong (Misi 4) dan Menghasilkan (Misi 5)"
+        ],
+        explanation: "Misi 4 diawali 'Mendorong' (partisipasi aktif...), sedangkan Misi 5 diawali 'Mewujudkan' (kontribusi nyata...)."
+      },
+      {
+        id: 28,
+        question: "Manakah butir Misi yang secara eksplisit memuat tujuan membentuk generasi yang 'mampu menjadikan tantangan sebagai peluang untuk berkembang'?",
+        correctOption: "Misi 3",
+        distractors: [
+          "Misi 2",
+          "Misi 4",
+          "Misi 5"
+        ],
+        explanation: "Misi 3 berbunyi: 'Membentuk generasi yang tangguh dan adaptif dalam menghadapi perubahan serta mampu menjadikan tantangan sebagai peluang untuk berkembang.'"
+      },
+      {
+        id: 29,
+        question: "Dalam dokumen panduan kacu, jenis font apa yang secara resmi digunakan untuk tulisan 'SP 25' dan apa kode warnanya?",
+        correctOption: "Barbara font dengan kode warna #c48e87",
+        distractors: [
+          "Barbara font dengan kode warna #FF9D00",
+          "Plus Jakarta Sans dengan kode warna #c48e87",
+          "JetBrains Mono dengan kode warna #DB0000"
+        ],
+        explanation: "Sesuai dokumen panduan kacu: tulisan 'SP 25' menggunakan Barbara font dengan warna #c48e87."
+      },
+      {
+        id: 30,
+        question: "Berapa total jumlah butir Misi resmi TERRAVANA yang menyertai Visi utama?",
+        correctOption: "5 Misi",
+        distractors: [
+          "3 Misi",
+          "4 Misi",
+          "6 Misi"
+        ],
+        explanation: "TERRAVANA memiliki tepat 5 butir Misi resmi."
+      }
+    ];
+
+    /* ========================================================================
+       APPLICATION STATE & ENGINE (DYNAMIC OPTION SHUFFLING)
+       ======================================================================== */
+    const state = {
+      activePack: '10', // '10' | '25' | 'all'
+      questions: [],
+      currentIndex: 0,
+      userAnswers: {}, // questionId: selectedIndex
+      wrongList: [],
+      startTime: 0,
+      timerInterval: null,
+      elapsedTime: 0,
+    };
+
+    // Client-side Web Audio synthesis (100% offline, zero assets)
+    let audioCtx = null;
+    function playBeep(freq = 600, duration = 0.08, type = 'sine') {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+    function soundCorrect() {
+      playBeep(523, 0.09, 'triangle');
+      setTimeout(() => playBeep(659, 0.12, 'triangle'), 70);
+    }
+    function soundWrong() {
+      playBeep(220, 0.16, 'sawtooth');
+    }
+
+    /* Shuffles options for a question and dynamically calculates correctIndex
+       This guarantees answers are completely dispersed across A, B, C, D every round! */
+    function buildShuffledQuestion(rawQ) {
+      const allOptions = [rawQ.correctOption, ...rawQ.distractors];
+      // Fisher-Yates Shuffle for options
+      for (let i = allOptions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [allOptions[i], allOptions[j]] = [allOptions[j], allOptions[i]];
+      }
+      const newCorrectIndex = allOptions.indexOf(rawQ.correctOption);
+
+      return {
+        id: rawQ.id,
+        question: rawQ.question,
+        options: allOptions,
+        correctIndex: newCorrectIndex,
+        explanation: rawQ.explanation,
+      };
+    }
+
+    /* ========================================================================
+       NAVIGATION & FLOW
+       ======================================================================== */
+    function goHome() {
+      clearInterval(state.timerInterval);
+      document.getElementById('view-home').classList.remove('hidden');
+      document.getElementById('view-quiz').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startQuiz(pack) {
+      state.activePack = pack;
+
+      // Shuffle Raw Bank first
+      const shuffledRaw = [...RAW_QUESTION_BANK].sort(() => Math.random() - 0.5);
+
+      let selectedRaw = [];
+      if (pack === '10') {
+        selectedRaw = shuffledRaw.slice(0, 10);
+      } else if (pack === '25') {
+        selectedRaw = shuffledRaw.slice(0, 25);
+      } else {
+        selectedRaw = shuffledRaw;
+      }
+
+      // Convert each question with randomized options so correctIndex is evenly distributed across A, B, C, D
+      state.questions = selectedRaw.map(rawQ => buildShuffledQuestion(rawQ));
+
+      state.currentIndex = 0;
+      state.userAnswers = {};
+      state.wrongList = [];
+      state.elapsedTime = 0;
+
+      // Reset views
+      document.getElementById('view-home').classList.add('hidden');
+      document.getElementById('view-quiz').classList.remove('hidden');
+      document.getElementById('quiz-active-container').classList.remove('hidden');
+      document.getElementById('quiz-summary-container').classList.add('hidden');
+      document.getElementById('quiz-live-score').textContent = '0';
+
+      // Start timer
+      clearInterval(state.timerInterval);
+      state.startTime = Date.now();
+      state.timerInterval = setInterval(() => {
+        state.elapsedTime = Math.floor((Date.now() - state.startTime) / 1000);
+        const mins = String(Math.floor(state.elapsedTime / 60)).padStart(2, '0');
+        const secs = String(state.elapsedTime % 60).padStart(2, '0');
+        const timerEl = document.getElementById('quiz-timer');
+        if (timerEl) timerEl.textContent = `${mins}:${secs}`;
+      }, 1000);
+
+      renderCurrentQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderCurrentQuestion() {
+      const q = state.questions[state.currentIndex];
+      const total = state.questions.length;
+      const current = state.currentIndex + 1;
+
+      // Update counters & progress bar
+      document.getElementById('quiz-curr-idx').textContent = current;
+      document.getElementById('quiz-total-idx').textContent = total;
+      const pct = Math.round((current / total) * 100);
+      document.getElementById('quiz-pct-text').textContent = `${pct}% Selesai`;
+      document.getElementById('quiz-progress-fill').style.width = `${pct}%`;
+
+      // Question Title
+      document.getElementById('quiz-question-text').textContent = q.question;
+
+      // Reset feedback panel & next button
+      document.getElementById('quiz-feedback-panel').classList.add('hidden');
+      document.getElementById('btn-quiz-next').classList.add('hidden');
+
+      // Render 4 Options
+      const optContainer = document.getElementById('quiz-options-container');
+      optContainer.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+
+      q.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.id = `opt-${idx}`;
+        btn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl glass-btn text-slate-800 text-xs sm:text-sm font-medium transition-all flex items-start gap-3 group focus:outline-none";
+        btn.onclick = () => selectOption(idx);
+
+        const badge = document.createElement('span');
+        badge.className = "w-6 h-6 rounded-lg bg-slate-100/90 border border-slate-200/80 text-slate-600 group-hover:text-terra-red font-mono font-bold text-xs flex items-center justify-center flex-shrink-0 transition-colors shadow-2xs";
+        badge.textContent = letters[idx];
+
+        const text = document.createElement('span');
+        text.className = "flex-1 leading-snug";
+        text.textContent = optText;
+
+        btn.appendChild(badge);
+        btn.appendChild(text);
+        optContainer.appendChild(btn);
+      });
+    }
+
+    function selectOption(selectedIndex) {
+      const q = state.questions[state.currentIndex];
+      if (state.userAnswers[q.id] !== undefined) return; // Guard against multiple taps
+
+      state.userAnswers[q.id] = selectedIndex;
+      const isCorrect = selectedIndex === q.correctIndex;
+
+      // Style all options
+      q.options.forEach((_, idx) => {
+        const btn = document.getElementById(`opt-${idx}`);
+        if (!btn) return;
+        btn.disabled = true;
+
+        if (idx === q.correctIndex) {
+          // Highlight correct answer in emerald
+          btn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl bg-emerald-50/90 border-2 border-emerald-500 text-emerald-900 text-xs sm:text-sm font-semibold flex items-start gap-3 shadow-xs";
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.className = "w-6 h-6 rounded-lg bg-emerald-500 text-white font-mono font-bold text-xs flex items-center justify-center flex-shrink-0";
+        } else if (idx === selectedIndex && !isCorrect) {
+          // Highlight selected wrong answer in rose red
+          btn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl bg-rose-50/90 border-2 border-rose-500 text-rose-900 text-xs sm:text-sm font-semibold flex items-start gap-3 shadow-xs";
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.className = "w-6 h-6 rounded-lg bg-rose-500 text-white font-mono font-bold text-xs flex items-center justify-center flex-shrink-0";
+        } else {
+          btn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl bg-slate-50/50 border border-slate-200/50 text-slate-400 text-xs sm:text-sm flex items-start gap-3 opacity-50";
+        }
+      });
+
+      // Update live score or wrong list
+      if (isCorrect) {
+        soundCorrect();
+        let currScore = parseInt(document.getElementById('quiz-live-score').textContent || '0');
+        document.getElementById('quiz-live-score').textContent = currScore + 1;
+      } else {
+        soundWrong();
+        state.wrongList.push({
+          question: q,
+          selected: selectedIndex,
+          correct: q.correctIndex
+        });
+      }
+
+      // Show explanation card
+      const panel = document.getElementById('quiz-feedback-panel');
+      const icon = document.getElementById('quiz-feedback-icon');
+      const title = document.getElementById('quiz-feedback-title');
+      const text = document.getElementById('quiz-feedback-text');
+
+      if (isCorrect) {
+        panel.className = "bg-emerald-50/85 backdrop-blur-md border-l-4 border-emerald-500 rounded-xl p-4 sm:p-5 mb-4 transition-all duration-200 shadow-xs text-emerald-900";
+        icon.innerHTML = `<svg class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        title.className = "text-xs sm:text-sm font-bold text-emerald-800 mb-1";
+        title.textContent = "Jawaban Tepat!";
+        text.className = "text-xs sm:text-sm text-emerald-800 leading-relaxed";
+      } else {
+        panel.className = "bg-rose-50/85 backdrop-blur-md border-l-4 border-rose-500 rounded-xl p-4 sm:p-5 mb-4 transition-all duration-200 shadow-xs text-rose-900";
+        icon.innerHTML = `<svg class="w-5 h-5 text-rose-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+        title.className = "text-xs sm:text-sm font-bold text-rose-800 mb-1";
+        title.textContent = "Kurang Tepat";
+        text.className = "text-xs sm:text-sm text-rose-800 leading-relaxed";
+      }
+      text.textContent = q.explanation;
+      panel.classList.remove('hidden');
+
+      // Show Next button
+      const nextBtn = document.getElementById('btn-quiz-next');
+      const isLast = state.currentIndex === state.questions.length - 1;
+      document.getElementById('btn-quiz-next-text').textContent = isLast ? "Lihat Hasil Akhir" : "Pertanyaan Selanjutnya";
+      nextBtn.classList.remove('hidden');
+    }
+
+    function handleNextQuestion() {
+      if (state.currentIndex < state.questions.length - 1) {
+        state.currentIndex++;
+        playBeep(520, 0.05);
+        renderCurrentQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      clearInterval(state.timerInterval);
+      playBeep(880, 0.2);
+
+      const total = state.questions.length;
+      let score = 0;
+      state.questions.forEach(q => {
+        if (state.userAnswers[q.id] === q.correctIndex) score++;
+      });
+
+      const pct = Math.round((score / total) * 100);
+      const mins = String(Math.floor(state.elapsedTime / 60)).padStart(2, '0');
+      const secs = String(state.elapsedTime % 60).padStart(2, '0');
+
+      document.getElementById('quiz-active-container').classList.add('hidden');
+      document.getElementById('quiz-summary-container').classList.remove('hidden');
+
+      document.getElementById('summary-score').textContent = `${score}/${total}`;
+      document.getElementById('summary-accuracy').textContent = `${pct}%`;
+      document.getElementById('summary-time').textContent = `${mins}:${secs}`;
+      document.getElementById('summary-wrong-count').textContent = state.wrongList.length;
+
+      // Grade text (using User's custom preferred short labels)
+      const gradeEl = document.getElementById('summary-grade-text');
+      if (pct === 100) {
+        gradeEl.textContent = "SEMPURNA!";
+        gradeEl.className = "text-xs sm:text-sm font-bold text-emerald-600 uppercase font-mono tracking-wider mb-6";
+      } else if (pct >= 80) {
+        gradeEl.textContent = "SANGAT BAIK!";
+        gradeEl.className = "text-xs sm:text-sm font-bold text-terra-orange uppercase font-mono tracking-wider mb-6";
+      } else {
+        gradeEl.textContent = "PERLU PENGULANGAN!";
+        gradeEl.className = "text-xs sm:text-sm font-bold text-rose-600 uppercase font-mono tracking-wider mb-6";
+      }
+
+      // Review mistakes button state
+      const reviewBtn = document.getElementById('btn-review-mistakes');
+      if (state.wrongList.length === 0) {
+        reviewBtn.classList.add('opacity-40', 'pointer-events-none');
+      } else {
+        reviewBtn.classList.remove('opacity-40', 'pointer-events-none');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function restartCurrentQuiz() {
+      startQuiz(state.activePack);
+    }
+
+    function confirmExitQuiz() {
+      goHome();
+    }
+
+    function showReviewMistakesModal() {
+      const container = document.getElementById('modal-review-list');
+      container.innerHTML = '';
+
+      state.wrongList.forEach((item, idx) => {
+        const box = document.createElement('div');
+        box.className = "p-3.5 glass-card rounded-xl text-left space-y-1.5 shadow-xs border border-rose-200/50";
+
+        const qTitle = document.createElement('p');
+        qTitle.className = "text-xs font-bold text-slate-900 leading-snug";
+        qTitle.textContent = `${idx + 1}. ${item.question.question}`;
+
+        const yourAns = document.createElement('div');
+        yourAns.className = "text-xs text-rose-600";
+        yourAns.innerHTML = `<strong>Jawaban Anda:</strong> ${item.question.options[item.selected]}`;
+
+        const correctAns = document.createElement('div');
+        correctAns.className = "text-xs text-emerald-700";
+        correctAns.innerHTML = `<strong>Jawaban Benar:</strong> ${item.question.options[item.correct]}`;
+
+        const exp = document.createElement('p');
+        exp.className = "text-[11px] text-slate-600 pt-1 border-t border-slate-200 leading-relaxed";
+        exp.textContent = `Penjelasan: ${item.question.explanation}`;
+
+        box.appendChild(qTitle);
+        box.appendChild(yourAns);
+        box.appendChild(correctAns);
+        box.appendChild(exp);
+        container.appendChild(box);
+      });
+
+      document.getElementById('modal-review').classList.remove('hidden');
+    }
+
+    function closeReviewModal() {
+      document.getElementById('modal-review').classList.add('hidden');
+    }
+
+    // Initialize total count display on home
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('home-total-bank-count');
+      if (el) el.textContent = RAW_QUESTION_BANK.length;
+    });
+  </script>
+</body>
+</html>
