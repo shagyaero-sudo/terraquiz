@@ -434,7 +434,6 @@
           </div>
           <div>
             <h3 id="pdf-modal-title" class="text-sm font-bold text-slate-900">Dokumen PDF</h3>
-            <span id="pdf-modal-file" class="text-[11px] font-mono text-slate-500">terravana - guideline.pdf</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
@@ -450,8 +449,6 @@
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
-            <span class="hidden sm:inline">Buka di Tab Baru</span>
-            <span class="sm:hidden">Unduh</span>
           </a>
           <button onclick="closePdfModal()" class="p-1.5 rounded-xl hover:bg-slate-200/60 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer" aria-label="Tutup Dialog">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -466,7 +463,7 @@
       <div id="pdf-viewer-container" class="flex-1 w-full bg-slate-200/50 relative overflow-y-auto p-3 sm:p-5 flex flex-col items-center gap-4">
         <div id="pdf-loading" class="my-auto py-12 flex flex-col items-center justify-center text-slate-500 gap-2.5">
           <div class="w-8 h-8 border-3 border-terra-red border-t-transparent rounded-full animate-spin"></div>
-          <span class="text-xs font-mono font-medium">Memuat berkas PDF asli...</span>
+          <span class="text-xs font-mono font-medium">Memuat berkas PDF...</span>
         </div>
         <div id="pdf-pages" class="w-full flex flex-col items-center gap-4"></div>
       </div>
