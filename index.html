@@ -104,7 +104,7 @@
 </head>
 <body class="bg-gradient-to-br from-slate-100 via-rose-100/40 via-amber-100/35 to-orange-100/30 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-center items-center p-4 selection:bg-terra-red selection:text-white relative overflow-x-hidden">
 
-  <!-- Ambient Light Orbs & Mesh Gradient Elements (Refracts through all glassmorphism cards, ready for custom background image) -->
+  <!-- Ambient Light Orbs & Mesh Gradient Elements -->
   <div class="fixed top-1/4 -left-20 w-80 h-80 bg-gradient-to-tr from-terra-red/25 to-terra-orange/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" style="animation-duration: 8s;"></div>
   <div class="fixed bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-bl from-amber-400/25 to-terra-red/20 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" style="animation-duration: 10s;"></div>
   <div class="fixed top-2/3 left-1/3 w-72 h-72 bg-gradient-to-r from-rose-300/20 to-amber-300/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
@@ -118,7 +118,7 @@
         <!-- Logo Collab Credit (Paling Atas) -->
         <img 
           src="/logocollab.png" 
-          alt="Collab Logo" 
+          alt="Logo Collab" 
           class="h-12 sm:h-16 w-auto object-contain mb-4 hover:scale-105 transition-transform duration-300 drop-shadow-xs"
         />
 
@@ -418,7 +418,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PDF READER VIEWER (BACA DOKUMEN RESMI ASLI LANGSUNG TANPA TRANSKRIP) -->
+  <!-- MODAL: PDF READER VIEWER -->
   <div id="modal-pdf" class="hidden fixed inset-0 z-50 bg-slate-900/45 backdrop-blur-md flex items-center justify-center p-2 sm:p-4">
     <div class="glass-modal rounded-3xl w-full max-w-4xl h-[90vh] flex flex-col shadow-2xl overflow-hidden">
       <!-- Modal Header -->
@@ -434,6 +434,7 @@
           </div>
           <div>
             <h3 id="pdf-modal-title" class="text-sm font-bold text-slate-900">Dokumen PDF</h3>
+            <span id="pdf-modal-file" class="text-[11px] font-mono text-slate-500">terravana - guideline.pdf</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
@@ -449,6 +450,8 @@
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
+            <span class="hidden sm:inline">Buka di Tab Baru</span>
+            <span class="sm:hidden">Unduh</span>
           </a>
           <button onclick="closePdfModal()" class="p-1.5 rounded-xl hover:bg-slate-200/60 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer" aria-label="Tutup Dialog">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -459,11 +462,11 @@
         </div>
       </div>
 
-      <!-- Modal Body (Renders the actual PDF pages directly with high fidelity) -->
+      <!-- Modal Body -->
       <div id="pdf-viewer-container" class="flex-1 w-full bg-slate-200/50 relative overflow-y-auto p-3 sm:p-5 flex flex-col items-center gap-4">
         <div id="pdf-loading" class="my-auto py-12 flex flex-col items-center justify-center text-slate-500 gap-2.5">
           <div class="w-8 h-8 border-3 border-terra-red border-t-transparent rounded-full animate-spin"></div>
-          <span class="text-xs font-mono font-medium">Memuat berkas PDF...</span>
+          <span class="text-xs font-mono font-medium">Memuat berkas PDF asli...</span>
         </div>
         <div id="pdf-pages" class="w-full flex flex-col items-center gap-4"></div>
       </div>
@@ -547,15 +550,6 @@
       document.getElementById('modal-pdf').classList.add('hidden');
     }
 
-    /* ========================================================================
-       STRICT CURATED QUESTION BANK (30 TARGETED QUESTIONS)
-       100% strictly aligned with TERRAVANA (Angkatan 25 Studi Pembangunan ITS):
-       - Terra, Vana, Terravana
-       - Angka 25, Arah Visual ke Atas, Burung Phoenix (SDGs 16), Gulungan Ombak (SDGs 14)
-       - Oranye (#FF9D00), Merah (#DB0000, #FF0800), Merah Marun (#570300, #860400)
-       - Kain Hitam, Posisi Leher
-       - Visi TERRAVANA & Misi 1 - 5
-       ======================================================================== */
     const RAW_QUESTION_BANK = [
       {
         id: 1,
@@ -889,21 +883,17 @@
       }
     ];
 
-    /* ========================================================================
-       APPLICATION STATE & ENGINE (DYNAMIC OPTION SHUFFLING)
-       ======================================================================== */
     const state = {
-      activePack: '10', // '10' | '25' | 'all'
+      activePack: '10',
       questions: [],
       currentIndex: 0,
-      userAnswers: {}, // questionId: selectedIndex
+      userAnswers: {},
       wrongList: [],
       startTime: 0,
       timerInterval: null,
       elapsedTime: 0,
     };
 
-    // Client-side Web Audio synthesis (100% offline, zero assets)
     let audioCtx = null;
     function playBeep(freq = 600, duration = 0.08, type = 'sine') {
       try {
@@ -929,11 +919,8 @@
       playBeep(220, 0.16, 'sawtooth');
     }
 
-    /* Shuffles options for a question and dynamically calculates correctIndex
-       This guarantees answers are completely dispersed across A, B, C, D every round! */
     function buildShuffledQuestion(rawQ) {
       const allOptions = [rawQ.correctOption, ...rawQ.distractors];
-      // Fisher-Yates Shuffle for options
       for (let i = allOptions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [allOptions[i], allOptions[j]] = [allOptions[j], allOptions[i]];
@@ -949,9 +936,6 @@
       };
     }
 
-    /* ========================================================================
-       NAVIGATION & FLOW
-       ======================================================================== */
     function goHome() {
       clearInterval(state.timerInterval);
       document.getElementById('view-home').classList.remove('hidden');
@@ -961,8 +945,6 @@
 
     function startQuiz(pack) {
       state.activePack = pack;
-
-      // Shuffle Raw Bank first
       const shuffledRaw = [...RAW_QUESTION_BANK].sort(() => Math.random() - 0.5);
 
       let selectedRaw = [];
@@ -974,22 +956,18 @@
         selectedRaw = shuffledRaw;
       }
 
-      // Convert each question with randomized options so correctIndex is evenly distributed across A, B, C, D
       state.questions = selectedRaw.map(rawQ => buildShuffledQuestion(rawQ));
-
       state.currentIndex = 0;
       state.userAnswers = {};
       state.wrongList = [];
       state.elapsedTime = 0;
 
-      // Reset views
       document.getElementById('view-home').classList.add('hidden');
       document.getElementById('view-quiz').classList.remove('hidden');
       document.getElementById('quiz-active-container').classList.remove('hidden');
       document.getElementById('quiz-summary-container').classList.add('hidden');
       document.getElementById('quiz-live-score').textContent = '0';
 
-      // Start timer
       clearInterval(state.timerInterval);
       state.startTime = Date.now();
       state.timerInterval = setInterval(() => {
@@ -1009,21 +987,17 @@
       const total = state.questions.length;
       const current = state.currentIndex + 1;
 
-      // Update counters & progress bar
       document.getElementById('quiz-curr-idx').textContent = current;
       document.getElementById('quiz-total-idx').textContent = total;
       const pct = Math.round((current / total) * 100);
       document.getElementById('quiz-pct-text').textContent = `${pct}% Selesai`;
       document.getElementById('quiz-progress-fill').style.width = `${pct}%`;
 
-      // Question Title
       document.getElementById('quiz-question-text').textContent = q.question;
 
-      // Reset feedback panel & next button
       document.getElementById('quiz-feedback-panel').classList.add('hidden');
       document.getElementById('btn-quiz-next').classList.add('hidden');
 
-      // Render 4 Options
       const optContainer = document.getElementById('quiz-options-container');
       optContainer.innerHTML = '';
       const letters = ['A', 'B', 'C', 'D'];
@@ -1050,24 +1024,21 @@
 
     function selectOption(selectedIndex) {
       const q = state.questions[state.currentIndex];
-      if (state.userAnswers[q.id] !== undefined) return; // Guard against multiple taps
+      if (state.userAnswers[q.id] !== undefined) return;
 
       state.userAnswers[q.id] = selectedIndex;
       const isCorrect = selectedIndex === q.correctIndex;
 
-      // Style all options
       q.options.forEach((_, idx) => {
         const btn = document.getElementById(`opt-${idx}`);
         if (!btn) return;
         btn.disabled = true;
 
         if (idx === q.correctIndex) {
-          // Highlight correct answer in emerald
           btn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl bg-emerald-50/90 border-2 border-emerald-500 text-emerald-900 text-xs sm:text-sm font-semibold flex items-start gap-3 shadow-xs";
           const badge = btn.querySelector('span:first-child');
           if (badge) badge.className = "w-6 h-6 rounded-lg bg-emerald-500 text-white font-mono font-bold text-xs flex items-center justify-center flex-shrink-0";
         } else if (idx === selectedIndex && !isCorrect) {
-          // Highlight selected wrong answer in rose red
           btn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl bg-rose-50/90 border-2 border-rose-500 text-rose-900 text-xs sm:text-sm font-semibold flex items-start gap-3 shadow-xs";
           const badge = btn.querySelector('span:first-child');
           if (badge) badge.className = "w-6 h-6 rounded-lg bg-rose-500 text-white font-mono font-bold text-xs flex items-center justify-center flex-shrink-0";
@@ -1076,7 +1047,6 @@
         }
       });
 
-      // Update live score or wrong list
       if (isCorrect) {
         soundCorrect();
         let currScore = parseInt(document.getElementById('quiz-live-score').textContent || '0');
@@ -1090,7 +1060,6 @@
         });
       }
 
-      // Show explanation card
       const panel = document.getElementById('quiz-feedback-panel');
       const icon = document.getElementById('quiz-feedback-icon');
       const title = document.getElementById('quiz-feedback-title');
@@ -1112,7 +1081,6 @@
       text.textContent = q.explanation;
       panel.classList.remove('hidden');
 
-      // Show Next button
       const nextBtn = document.getElementById('btn-quiz-next');
       const isLast = state.currentIndex === state.questions.length - 1;
       document.getElementById('btn-quiz-next-text').textContent = isLast ? "Lihat Hasil Akhir" : "Pertanyaan Selanjutnya";
@@ -1151,7 +1119,6 @@
       document.getElementById('summary-time').textContent = `${mins}:${secs}`;
       document.getElementById('summary-wrong-count').textContent = state.wrongList.length;
 
-      // Grade text (using User's custom preferred short labels)
       const gradeEl = document.getElementById('summary-grade-text');
       if (pct === 100) {
         gradeEl.textContent = "SEMPURNA!";
@@ -1164,7 +1131,6 @@
         gradeEl.className = "text-xs sm:text-sm font-bold text-rose-600 uppercase font-mono tracking-wider mb-6";
       }
 
-      // Review mistakes button state
       const reviewBtn = document.getElementById('btn-review-mistakes');
       if (state.wrongList.length === 0) {
         reviewBtn.classList.add('opacity-40', 'pointer-events-none');
@@ -1177,10 +1143,6 @@
 
     function restartCurrentQuiz() {
       startQuiz(state.activePack);
-    }
-
-    function confirmExitQuiz() {
-      goHome();
     }
 
     function showReviewMistakesModal() {
@@ -1221,7 +1183,6 @@
       document.getElementById('modal-review').classList.add('hidden');
     }
 
-    // Initialize total count display on home
     document.addEventListener('DOMContentLoaded', () => {
       const el = document.getElementById('home-total-bank-count');
       if (el) el.textContent = RAW_QUESTION_BANK.length;
