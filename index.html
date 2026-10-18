@@ -2853,44 +2853,58 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function startQuiz(pack) {
-      state.activePack = pack;
-      const shuffledRaw = [...RAW_QUESTION_BANK].sort(() => Math.random() - 0.5);
+    // Fungsi Helper: Pengacak sempurna (Fisher-Yates Shuffle)
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
-      let selectedRaw = [];
-      if (pack === '10') {
-        selectedRaw = shuffledRaw.slice(0, 10);
-      } else if (pack === '25') {
-        selectedRaw = shuffledRaw.slice(0, 25);
-      } else {
-        selectedRaw = shuffledRaw;
-      }
+function startQuiz(pack) {
+  state.activePack = pack;
+  
+  // Mengacak seluruh bank soal dengan algoritma Fisher-Yates
+  const shuffledRaw = shuffleArray(RAW_QUESTION_BANK);
 
-      state.questions = selectedRaw.map(rawQ => buildShuffledQuestion(rawQ));
-      state.currentIndex = 0;
-      state.userAnswers = {};
-      state.wrongList = [];
-      state.elapsedTime = 0;
+  let selectedRaw = [];
+  if (pack === '7' || pack === '07') {
+    selectedRaw = shuffledRaw.slice(0, 7);
+  } else if (pack === '10') {
+    selectedRaw = shuffledRaw.slice(0, 10);
+  } else if (pack === '25') {
+    selectedRaw = shuffledRaw.slice(0, 25);
+  } else {
+    selectedRaw = shuffledRaw; // Mode ALL (200 Soal)
+  }
 
-      document.getElementById('view-home').classList.add('hidden');
-      document.getElementById('view-quiz').classList.remove('hidden');
-      document.getElementById('quiz-active-container').classList.remove('hidden');
-      document.getElementById('quiz-summary-container').classList.add('hidden');
-      document.getElementById('quiz-live-score').textContent = '0';
+  state.questions = selectedRaw.map(rawQ => buildShuffledQuestion(rawQ));
+  state.currentIndex = 0;
+  state.userAnswers = {};
+  state.wrongList = [];
+  state.elapsedTime = 0;
 
-      clearInterval(state.timerInterval);
-      state.startTime = Date.now();
-      state.timerInterval = setInterval(() => {
-        state.elapsedTime = Math.floor((Date.now() - state.startTime) / 1000);
-        const mins = String(Math.floor(state.elapsedTime / 60)).padStart(2, '0');
-        const secs = String(state.elapsedTime % 60).padStart(2, '0');
-        const timerEl = document.getElementById('quiz-timer');
-        if (timerEl) timerEl.textContent = `${mins}:${secs}`;
-      }, 1000);
+  document.getElementById('view-home').classList.add('hidden');
+  document.getElementById('view-quiz').classList.remove('hidden');
+  document.getElementById('quiz-active-container').classList.remove('hidden');
+  document.getElementById('quiz-summary-container').classList.add('hidden');
+  document.getElementById('quiz-live-score').textContent = '0';
 
-      renderCurrentQuestion();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  clearInterval(state.timerInterval);
+  state.startTime = Date.now();
+  state.timerInterval = setInterval(() => {
+    state.elapsedTime = Math.floor((Date.now() - state.startTime) / 1000);
+    const mins = String(Math.floor(state.elapsedTime / 60)).padStart(2, '0');
+    const secs = String(state.elapsedTime % 60).padStart(2, '0');
+    const timerEl = document.getElementById('quiz-timer');
+    if (timerEl) timerEl.textContent = `${mins}:${secs}`;
+  }, 1000);
+
+  renderCurrentQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
     function renderCurrentQuestion() {
       const q = state.questions[state.currentIndex];
