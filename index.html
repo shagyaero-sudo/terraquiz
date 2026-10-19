@@ -316,7 +316,7 @@
             onclick="handleNextQuestion()"
             class="hidden py-3 px-6 bg-gradient-to-r from-terra-red to-terra-vibrantRed hover:from-terra-vibrantRed hover:to-terra-red text-white text-xs sm:text-sm font-semibold rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2 active:scale-95"
           >
-            <span id="btn-quiz-next-text">Pertanyaan Selanjutnya</span>
+            <span id="btn-quiz-next-text">Next</span>
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
@@ -1902,7 +1902,7 @@
       },
       {
         id: 120,
-        question: "Poin 'KAMBIN' (Keluarga Mahasiswa Binaan) merupakan bagian dari fokus evaluasi Rencana Strategis (RENSTRA) pada pilar?",
+        question: "Poin 'KAMBIN' (Kampung Binaan) merupakan bagian dari fokus evaluasi Rencana Strategis (RENSTRA) pada pilar?",
         correctOption: "Budaya Organisasi",
         distractors: [
           "Regenerasi",
@@ -3007,7 +3007,7 @@ function startQuiz(pack) {
 
       const nextBtn = document.getElementById('btn-quiz-next');
       const isLast = state.currentIndex === state.questions.length - 1;
-      document.getElementById('btn-quiz-next-text').textContent = isLast ? "Lihat Hasil Akhir" : "Pertanyaan Selanjutnya";
+      document.getElementById('btn-quiz-next-text').textContent = isLast ? "Lihat Hasil Akhir" : "Next";
       nextBtn.classList.remove('hidden');
     }
 
@@ -3051,7 +3051,7 @@ function startQuiz(pack) {
         gradeEl.textContent = "SANGAT BAIK!";
         gradeEl.className = "text-xs sm:text-sm font-bold text-terra-orange uppercase font-mono tracking-wider mb-6";
       } else {
-        gradeEl.textContent = "PERLU PENGULANGAN!";
+        gradeEl.textContent = "DITINGKATKAN LAGI!";
         gradeEl.className = "text-xs sm:text-sm font-bold text-rose-600 uppercase font-mono tracking-wider mb-6";
       }
 
